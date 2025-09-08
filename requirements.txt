@@ -1,0 +1,6 @@
+fastapi==0.95.2
+uvicorn[standard]==0.22.0
+web3==6.4.0
+python-dotenv==1.0.0
+eth-account==0.8.0
+py-solc-x==1.1.1
