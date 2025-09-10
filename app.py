@@ -2,11 +2,10 @@ import os
 import json
 from pathlib import Path
 from typing import List
-
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 from web3 import Web3
 from dotenv import load_dotenv
+from models.bcmodels import LogIn,LogOut
 
 load_dotenv()
 
@@ -19,25 +18,6 @@ HERE = Path(__file__).parent
 ABI = json.loads((HERE / 'LogStore.abi.json').read_text())
 
 app = FastAPI(title='LogStore API')
-
-
-class LogIn(BaseModel):
-    doctorName: str
-    reason: str
-    patientId: str
-    logTime: int
-    message: str
-
-
-class LogOut(BaseModel):
-    sender: str
-    blockTimestamp: int
-    doctorName: str
-    reason: str
-    patientId: str
-    logTime: int
-    message: str
-
 
 def get_w3():
     if not RPC_URL:
